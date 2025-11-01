@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Pembuat Resume Profesional</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>Resume Builder</h1>
+            <p>Buat resume profesional anda dengan mudah</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Form Section -->
+            <div class="form-section">
+                <div class="form-header">
+                    <h2>Maklumat Resume</h2>
+                    <button class="btn btn--secondary" onclick="resetForm()">Reset Semua</button>
+                </div>
+
+                <form id="resumeForm">
+                    <!-- Personal Info -->
+                    <div class="form-group">
+                        <h3>Profil Peribadi</h3>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label>Nama Penuh</label>
+                                <input type="text" id="fullName" placeholder="Nama anda">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label>Telefon</label>
+                                <input type="tel" id="phone" placeholder="+60123456789">
+                            </div>
+                            <div class="input-field">
+                                <label>Email</label>
+                                <input type="email" id="email" placeholder="email@example.com">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label>Alamat</label>
+                                <input type="text" id="address" placeholder="Alamat lengkap">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label>No. IC</label>
+                                <input type="text" id="icNumber" placeholder="123456-12-1234">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Career Objective -->
+                    <div class="form-group">
+                        <h3>Objektif Kerjaya</h3>
+                        <textarea id="objective" rows="4" placeholder="Tulis objektif kerjaya anda..."></textarea>
+                    </div>
+
+                    <!-- Professional Profile -->
+                    <div class="form-group">
+                        <h3>Profil Profesional</h3>
+                        <textarea id="profile" rows="4" placeholder="Tulis profil profesional anda..."></textarea>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="form-group">
+                        <h3>Bahasa</h3>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="langEnglish" value="English"> English</label>
+                            <label><input type="checkbox" id="langMelayu" value="Bahasa Melayu"> Bahasa Melayu</label>
+                            <label><input type="checkbox" id="langArabic" value="Arabic"> Arabic</label>
+                        </div>
+                        <div class="input-row">
+                            <input type="text" id="otherLanguage" placeholder="Bahasa lain...">
+                            <button type="button" class="btn btn--sm" onclick="addOtherLanguage()">Tambah</button>
+                        </div>
+                        <div id="otherLanguagesList"></div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="form-group">
+                        <h3>Kemahiran / Skills</h3>
+                        <div id="skillsList"></div>
+                        <div class="input-row">
+                            <input type="text" id="skillName" placeholder="Nama kemahiran">
+                            <input type="number" id="skillPercent" min="0" max="100" placeholder="%">
+                            <button type="button" class="btn btn--sm" onclick="addSkill()">Tambah Skill</button>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div class="form-group">
+                        <h3>Pengalaman Kerja</h3>
+                        <div id="workExperienceList"></div>
+                        <button type="button" class="btn btn--secondary" onclick="addWorkExperience()">+ Tambah Pengalaman</button>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="form-group">
+                        <h3>Latar Belakang Pendidikan</h3>
+                        <div id="educationList"></div>
+                        <button type="button" class="btn btn--secondary" onclick="addEducation()">+ Tambah Pendidikan</button>
+                    </div>
+
+                    <!-- Additional Skills -->
+                    <div class="form-group">
+                        <h3>Keahlian Tambahan (Software/Tools)</h3>
+                        <div id="additionalSkillsList"></div>
+                        <div class="input-row">
+                            <input type="text" id="additionalSkillName" placeholder="Nama software/tool">
+                            <input type="number" id="additionalSkillPercent" min="0" max="100" placeholder="%">
+                            <button type="button" class="btn btn--sm" onclick="addAdditionalSkill()">Tambah</button>
+                        </div>
+                    </div>
+
+                    <!-- Extracurricular -->
+                    <div class="form-group">
+                        <h3>Aktiviti Ekstrakurikuler</h3>
+                        <div id="extracurricularList"></div>
+                        <button type="button" class="btn btn--secondary" onclick="addExtracurricular()">+ Tambah Aktiviti</button>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="form-group">
+                        <h3>Sijil / Latihan</h3>
+                        <div id="certificationList"></div>
+                        <button type="button" class="btn btn--secondary" onclick="addCertification()">+ Tambah Sijil</button>
+                    </div>
+
+                    <!-- Referees -->
+                    <div class="form-group">
+                        <h3>Rujukan (Referees)</h3>
+                        <div id="refereesList"></div>
+                        <button type="button" class="btn btn--secondary" onclick="addReferee()">+ Tambah Rujukan</button>
+                    </div>
+
+                    <!-- Other Info -->
+                    <div class="form-group">
+                        <h3>Maklumat Lain</h3>
+                        <div class="input-field">
+                            <label>Ketersediaan</label>
+                            <input type="text" id="availability" placeholder="Contoh: Segera / 1 bulan">
+                        </div>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="willingTravel"> Bersedia untuk travel</label>
+                            <label><input type="checkbox" id="willingRelocate"> Bersedia untuk relocate</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <div class="preview-header">
+                    <h2>Preview Resume</h2>
+                    <div class="export-buttons">
+                        <button class="btn btn--primary" onclick="exportToPDF()">Export PDF</button>
+                        <button class="btn btn--primary" onclick="exportToDocx()">Export DOCX</button>
+                        <button class="btn btn--outline" onclick="printResume()">Print</button>
+                    </div>
+                </div>
+                <div id="resumePreview" class="resume-preview">
+                    <!-- Resume content will be dynamically generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docx@7.8.2/build/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
